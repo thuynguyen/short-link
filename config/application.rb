@@ -32,7 +32,7 @@ module ShortLink
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-    config.cache_store = :redis_cache_store, { url: ENV['LNG_REDIS_SIDEKIQ_URL'] }
-    config.active_storage.service = :redu
+    config.cache_store = :redis_cache_store, { url: ENV['HEROKU_REDIS_GOLD_URL'] }
+    config.active_storage.service = :redis
   end
 end

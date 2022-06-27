@@ -1,3 +1,10 @@
+production:
+  # Configure available database clients. (required)
+  clients:
+    # Defines the default client. (required)
+    default:
+      # Mongoid can connect to a URI accepted by the driver:
+      uri: ENV['MONGODB_URI']
 development:
   # Configure available database clients. (required)
   clients:
