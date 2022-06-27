@@ -1,0 +1,1 @@
+REDIS_CACHE = ActiveSupport::Cache::RedisCacheStore.new
