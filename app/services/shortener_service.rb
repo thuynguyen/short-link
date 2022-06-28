@@ -7,7 +7,7 @@ class ShortenerService
 	end
 
 	def call
-    [ENV['DOMAIN'], Digest::SHA2.new(512).hexdigest(original_link)[0..8]].join("/")
+    [ENV['DOMAIN'], Digest::SHA2.new(512).hexdigest(original_link)[0..6]].join("/")
 	end
 end
 

@@ -4,7 +4,7 @@ production:
     # Defines the default client. (required)
     default:
       # Mongoid can connect to a URI accepted by the driver:
-      uri: ENV['MONGODB_URI']
+      uri: mongodb+srv://mongod:mongod@cluster0.qs57o.mongodb.net/short_link?authSource=admin&retryWrites=true&w=majority
 development:
   # Configure available database clients. (required)
   clients:

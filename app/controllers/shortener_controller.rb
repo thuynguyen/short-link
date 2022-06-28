@@ -5,19 +5,12 @@ class ShortenerController < ApplicationController
   before_action :validate_param, only: [:encode, :decode]
 
   def encode
-    sequence = Statistic.all.count + 1
-    short_link = ShortenerService.new(shortener_params[:url] + sequence.to_s).()
-    last_record = Statistic.save_encode_record({original_link: shortener_params[:url],
-                                 short_link: short_link, sequence: sequence}.merge(statistic_attrs))
-    REDIS_CACHE.write(short_link, shortener_params[:url]) unless REDIS_CACHE.read(short_link).present?
+    short_link = EncodeService.new(shortener_params[:url], statistic_attrs).()
     render json: { data: { short_link: short_link } }
   end
 
   def decode
-    sequence = Statistic.all.count + 1
-    original_link = REDIS_CACHE.read(shortener_params[:url]) 
-    statistic = Statistic.where(original_link: original_link, short_link: shortener_params[:url]).first
-    statistic&.update(sequence: sequence)
+    original_link = DecodeService.new(shortener_params[:url]).()
     render json: { data: { original_link: original_link } }
   end
 

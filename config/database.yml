@@ -4,7 +4,21 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+development:
+  <<: *default
+  database: short_link_test
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5434
 test:
+  <<: *default
+  database: short_link_test
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5434
+production:
   <<: *default
   database: short_link_test
   username: postgres
