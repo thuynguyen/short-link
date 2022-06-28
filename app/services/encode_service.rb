@@ -11,7 +11,6 @@ class EncodeService
     try_time = 0
     begin
       sequence ||= Statistic.all.count + 1
-      puts "====#{sequence.inspect}========"
       short_link = ShortenerService.new(original_link + sequence.to_s).()
       raise DuplicateShorLinkError, "Collision short link" if REDIS_CACHE.read(short_link).present?
       last_record = Statistic.save_encode_record({ original_link: original_link,
