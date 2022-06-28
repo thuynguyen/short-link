@@ -11,6 +11,9 @@ class Statistic
   field :action, type: String
   field :sequence, type: Integer
 
+  validates_uniqueness_of :short_link
+  validates_presence_of :original_link, :short_link
+
   REGEX_URL = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:
 [0-9]{1,5})?(\/.*)?$/ix
 
