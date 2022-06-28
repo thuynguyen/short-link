@@ -21,6 +21,7 @@
 ## Security:
   - To avoid as much as the collisions between links, I use sequence to modify the original link before encoding by SHA2 to short link. So users who will not face the issue redirect to wrong expectation link, will not access link of other users. I selected to SHA2 to encode because when I manually test it, if between these links are different by 1 character, it will be returned different encode.
   - Some potential attack vectors on the application: when attacker has the short link, they can use it to redirect to phishing domains. Because these links are often used in email, SMS so users easily to click on it.
+  - Currently, the project is missing the security related to: authentication, captcha, ... to project user's info.
 
 ## Scalability
   - Because I have used Redis, and Rails server:
